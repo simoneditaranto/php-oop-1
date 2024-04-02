@@ -7,7 +7,7 @@
     class Movie {
 
         public $title;
-        public $genre;
+        public $genres;
         public $overview;
         public $director;
 
@@ -19,9 +19,9 @@
          * @param  string $_genre
          * @param string $_overview
          */
-        function __construct($_title, $_genre, $_director) {
+        function __construct($_title, array $_genres, $_director) {
             $this->title = $_title;
-            $this->genre = $_genre;
+            $this->genres = $_genres;
             $this->director = $_director;
         }
         
@@ -37,12 +37,12 @@
     }
 
     // creo due istanze di Movie
-    $movie1 = new Movie("Pulp Fiction", "[Pulp, crime]", "Quentin Tarantino");
+    $movie1 = new Movie("Pulp Fiction", ["Pulp", "Crime"], "Quentin Tarantino");
     $movie1overview = "Una serie di storie intrecciate che raccontano la vita di criminali, gangster e pugili nella Los Angeles del 1994.";
     $movie1->overview = $movie1overview;
     // var_dump($movie1);
 
-    $movie2 = new Movie("Bastardi senza gloria", "[Azione, guerra]", "Quentin Tarantino");
+    $movie2 = new Movie("Bastardi senza gloria", ["Azione", "Guerra"], "Quentin Tarantino");
     // var_dump($movie2);
 
     // creo un array di Movie
@@ -73,21 +73,34 @@
         <h1>Movies</h1>
 
         <ul>
-
+            
             <?php
-
                 foreach($movies as $movie) {
-
                     echo "
                     <li>
-                        " . $movie->title . ", " . $movie->genre . ", " . $movie->director . " <br>
-                        Trama: " . $movie->getOverview() . "
-
-                    </li>";
-
-                }
-
+                        " . $movie->title . "
+                    "
             ?>
+            <ul>
+            
+            <!-- generi -->
+            <?php
+                foreach($movie->genres as $genre) {
+                    echo "
+                    <li>
+                        " . $genre . "
+                    </li>";
+                }
+            ?>
+            </ul>
+
+            <?php
+                echo "
+                    Trama: " . $movie->getOverview() . "
+                </li>";
+                }
+            ?>
+
 
         </ul>
 
