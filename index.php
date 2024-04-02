@@ -1,3 +1,60 @@
+<?php
+
+        
+    /**
+     * classe che rappresenta un singolo film
+     */
+    class Movie {
+
+        public $title;
+        public $genre;
+        public $overview;
+        public $director;
+
+                
+        /**
+         * __construct
+         *
+         * @param  string $_title
+         * @param  string $_genre
+         * @param string $_overview
+         */
+        function __construct($_title, $_genre, $_director) {
+            $this->title = $_title;
+            $this->genre = $_genre;
+            $this->director = $_director;
+        }
+        
+        /**
+         * getOverview
+         * metodo che ritorna la tram del film
+         * @return string
+         */
+        public function getOverview() {
+            return $this->overview;
+        }
+
+    }
+
+    // creo due istanze di Movie
+    $movie1 = new Movie("Pulp Fiction", "[Pulp, crime]", "Quentin Tarantino");
+    $movie1overview = "Una serie di storie intrecciate che raccontano la vita di criminali, gangster e pugili nella Los Angeles del 1994.";
+    $movie1->overview = $movie1overview;
+    // var_dump($movie1);
+
+    $movie2 = new Movie("Bastardi senza gloria", "[Azione, guerra]", "Quentin Tarantino");
+    // var_dump($movie2);
+
+    // creo un array di Movie
+    $movies = [
+        $movie1, 
+        $movie2
+    ];
+    var_dump(($movies));
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +69,27 @@
 <body>
 
     <div class="container">
-        
+
         <h1>Movies</h1>
+
+        <ul>
+
+            <?php
+
+                foreach($movies as $movie) {
+
+                    echo "
+                    <li>
+                        " . $movie->title . ", " . $movie->genre . ", " . $movie->director . " <br>
+                        Trama: " . $movie->getOverview() . "
+
+                    </li>";
+
+                }
+
+            ?>
+
+        </ul>
 
     </div>
 
