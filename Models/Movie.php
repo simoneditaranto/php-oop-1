@@ -1,5 +1,4 @@
 <?php
-
 /**
      * classe che rappresenta un singolo film
      */
@@ -18,7 +17,7 @@
          * @param  string $_genre
          * @param string $_overview
          */
-        function __construct($_title, array $_genres, $_director) {
+        function __construct($_title, array $_genres, Director $_director) {
             $this->title = $_title;
             $this->genres = $_genres;
             $this->director = $_director;

@@ -27,8 +27,9 @@
             </ul>
 
             <?php
-                echo "
-                    Trama: " . $movie->getOverview() . "
+                echo " Regista: 
+                    " . $movie->director->getInfo() . 
+                    "<br> Trama: " . $movie->getOverview() . "
                 </li>";
                 }
             ?>
